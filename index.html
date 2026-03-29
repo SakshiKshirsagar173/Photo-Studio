@@ -41,7 +41,7 @@
       position: absolute;
       inset: 0;
       background: url('photographer.png') top left / cover no-repeat;
-      opacity: 0.45;
+      opacity: 2.5;
       z-index: 0;
     }
 
@@ -140,20 +140,16 @@
     }
 
     /* ================= GALLERY ================= */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
+   .gallery {
+  column-count: 4;
+  column-gap: 20px;
+}
 
     .gallery img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 14px;
-      filter: brightness(0.9);
-      transition: transform 0.4s ease, filter 0.4s ease;
-    }
+  width: 100%;
+  height: auto;
+  break-inside: avoid;
+}
 
     .gallery img:hover {
       transform: scale(1.05);
@@ -228,6 +224,9 @@
       .hero-bg {
         opacity: 0.35; /* HERO IMAGE VISIBLE ON MOBILE */
       }
+      .gallery {
+    column-count: 1;
+  }
 
       .gallery img { height: 160px; }
       section h2 { font-size: 1.7rem; }
@@ -287,16 +286,17 @@
     <div class="gallery">
     <img src="kids1.jpg" alt="Portfolio">
     <img src="kids2.jpg" alt="Portfolio">
-    <img src="kids3.jpg" alt="Portfolio">
+     <img src="family.jpg" alt="Portfolio">
     <img src="kids4.jpg" alt="Portfolio">
     <img src="kids5.jpg" alt="Portfolio">
     <img src="maternity1.webp" alt="Portfolio">
     <img src="maternity2.jpg" alt="Portfolio">
-    <img src="maternity3.jpg" alt="Portfolio">
-    <img src="family.jpg" alt="Portfolio">
-    <img src="wedding1.jpg" alt="Portfolio">
+      <img src="wedding1.jpg" alt="Portfolio">
+       <img src="kids3.jpg" alt="Portfolio">
+       <img src="couple.jpeg" alt="Portfolio">
     <img src="wedding3.jpg" alt="Portfolio">
-    <img src="couple.jpeg" alt="Portfolio">
+    <img src="maternity3.jpg" alt="Portfolio">
+    <img src="couple1.webp" alt="Portfolio">
     </div>
   </section>
 
@@ -304,8 +304,8 @@
   <section id="booking">
     <h2>Book / Enquire</h2>
     <form onsubmit="sendWhatsApp(event)">
-      <input type="text" id="name" placeholder="Your Name" required />
-      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="text" id="name" placeholder="Your name" required />
+      <input type="tel" id="phone" placeholder="Phone number" required />
 
       <select id="service" required>
         <option value="">Select Service</option>
@@ -335,7 +335,7 @@
       const message = messageInput.value;
 
       const text = `Hi, I am ${name}. Interested in ${service}. Date: ${date}. Message: ${message}. Phone: ${phone}`;
-      window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(text)}`, '_blank');
+      window.open(`https://wa.me/918237507486?text=${encodeURIComponent(text)}`, '_blank');
     }
 
     const nameInput = document.getElementById('name');
