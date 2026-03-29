@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family & Wedding Photography Studio</title>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --card: #171720;
+      --text: #eaeaf0;
+      --muted: #b5b5c0;
+      --accent: #c9a24d; /* premium gold */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      position: relative;
+      background: linear-gradient(120deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 60%), var(--bg);
+      padding: 120px 20px 120px 50%;
+      text-align: left;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    header h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 4rem;
+      font-weight: 750;
+      margin-bottom: 15px;
+      max-width: 600px;
+    }
+
+    header p {
+      position: relative;
+      z-index: 2;
+      font-size: 2rem;
+      color: var(--muted);
+      max-width: 550px;
+    }
+
+    section {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 22px;
+      background: transparent;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 14px;
+      filter: brightness(0.9);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    form {
+      max-width: 650px;
+      margin: auto;
+      background: var(--card);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      display: grid;
+      gap: 18px;
+    }
+
+    input, select, textarea {
+      background: #0c0c12;
+      border: 1px solid #2a2a35;
+      color: var(--text);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--muted);
+    }
+
+    button {
+      margin-top: 10px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 14px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(201,162,77,0.4);
+    }
+
+    footer {
+      background: #09090d;
+      color: var(--muted);
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      section h2 { font-size: 1.8rem; }
+    }
+  
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 55%;
+      height: 100%;
+      background: url('photographer.png') top left / cover no-repeat;
+      opacity: 0.9;
+      z-index: 0; /* force image behind text */
+      -webkit-mask-image:
+        radial-gradient(circle at top left, black 40%, transparent 75%),
+        linear-gradient(to right, black 60%, transparent 100%),
+        linear-gradient(to bottom, black 70%, transparent 100%);
+      -webkit-mask-composite: intersect;
+      mask-image:
+        radial-gradient(circle at top left, black 40%, transparent 75%),
+        linear-gradient(to right, black 60%, transparent 100%),
+        linear-gradient(to bottom, black 70%, transparent 100%);
+      mask-composite: intersect;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image { display: none; }
+      header { text-align: center; }
+      header h1, header p { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hero-image"></div>
+  <h1>Capturing Childhood, Motherhood & Weddings</h1>
+  <p>Professional Kids, Maternity & Wedding Photography</p>
+</header>
+
+<section>
+  <h2>Our Services</h2>
+  <div class="services">
+
+    <div class="card">
+      <img src="kids.jpg" alt="Kids Photography">
+      <div class="card-content">
+        <h3>Kids Photography</h3>
+        <p>Newborn, toddler & birthday photoshoots.</p>
+        <a href="#booking" class="btn">Book Kids Shoot</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="maternity.webp" alt="Maternity Photography">
+      <div class="card-content">
+        <h3>Maternity Photography</h3>
+        <p>Beautiful & comfortable maternity sessions.</p>
+        <a href="#booking" class="btn">Book Maternity Shoot</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="wedding.jpg" alt="Wedding Photography">
+      <div class="card-content">
+        <h3>Wedding Photography</h3>
+        <p>Pre-wedding to reception coverage.</p>
+        <a href="#booking" class="btn">Check Availability</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Portfolio</h2>
+  <div class="gallery">
+    <img src="kids1.jpg" alt="Portfolio">
+    <img src="kids2.jpg" alt="Portfolio">
+    <img src="kids3.jpg" alt="Portfolio">
+    <img src="kids4.jpg" alt="Portfolio">
+    <img src="kids5.jpg" alt="Portfolio">
+    <img src="maternity1.webp" alt="Portfolio">
+    <img src="maternity2.jpg" alt="Portfolio">
+    <img src="maternity3.jpg" alt="Portfolio">
+    <img src="family.jpg" alt="Portfolio">
+    <img src="wedding1.jpg" alt="Portfolio">
+    <img src="wedding3.jpg" alt="Portfolio">
+    <img src="couple.jpeg" alt="Portfolio">
+    
+  </div>
+</section>
+
+<section id="booking">
+  <h2>Book / Enquire</h2>
+  <form onsubmit="sendWhatsApp(event)">
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="tel" id="phone" placeholder="Phone Number" required />
+
+    <select id="service" required>
+      <option value="">Select Service</option>
+      <option value="Kids Photography">Kids Photography</option>
+      <option value="Maternity Photography">Maternity Photography</option>
+      <option value="Wedding Photography">Wedding Photography</option>
+    </select>
+
+    <input type="date" id="date" />
+
+    <textarea id="message" placeholder="Your Message"></textarea>
+
+    <button type="submit">Send Enquiry</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 Photography Studio. All Rights Reserved.</p>
+</footer>
+
+<script>
+  function sendWhatsApp(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const date = document.getElementById('date').value;
+    const message = document.getElementById('message').value;
+
+    const text = `Hi, I am ${name}. I want to enquire about ${service}. Preferred date: ${date}. Message: ${message}. My phone: ${phone}`;
+
+    const url = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
